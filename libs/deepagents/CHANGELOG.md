@@ -2,6 +2,52 @@
 
 # Deep Agents Changelog
 
+## [0.7.0](https://github.com/Kokoing123/deepagents/compare/deepagents==0.6.12...deepagents==0.7.0) (2026-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **sdk:** disambiguate `read_file` line gutters ([#4561](https://github.com/Kokoing123/deepagents/issues/4561))
+* **sdk:** Agents can now overwrite existing files with `write_file` instead of receiving a file-exists error. Workflows, prompts, tests, or guardrails that relied on that error to force `edit_file` usage or to protect existing content must add explicit permission/HITL checks or use `edit_file` when preserving existing content matters.
+* **sdk:** Agents now see a destructive `delete` filesystem tool when the backend supports it. Existing agents may choose to remove files or directories recursively, and existing filesystem permission rules that allow writes can now authorize deletion unless a narrower deny or interrupt rule blocks the target subtree.
+
+### Features
+
+* **code,sdk:** add rubric iteration controls ([#4405](https://github.com/Kokoing123/deepagents/issues/4405)) ([d6692a7](https://github.com/Kokoing123/deepagents/commit/d6692a7c713490f170b17510d613e02ee37574ab))
+* **sdk:** add `enabled_tools` allowlist to `FilesystemMiddleware` ([#4325](https://github.com/Kokoing123/deepagents/issues/4325)) ([704a70d](https://github.com/Kokoing123/deepagents/commit/704a70dddbd59b8c6abf658a4211c76bce1445f0))
+* **sdk:** add Bedrock prompt caching middleware ([#4108](https://github.com/Kokoing123/deepagents/issues/4108)) ([a398382](https://github.com/Kokoing123/deepagents/commit/a398382c85ce518ea1b7f365e49df905cdcd498b))
+* **sdk:** add NVIDIA Nemotron 3 Ultra harness profile ([#4192](https://github.com/Kokoing123/deepagents/issues/4192)) ([d5a60ec](https://github.com/Kokoing123/deepagents/commit/d5a60ece7379c37c81edcef2cd6c2811ddc90c9a))
+* **sdk:** add NVIDIA NIM app-origin attribution ([#4455](https://github.com/Kokoing123/deepagents/issues/4455)) ([4cb4749](https://github.com/Kokoing123/deepagents/commit/4cb47491b024991322b7c24062c58cbcdc26a727))
+* **sdk:** add recursive filesystem delete support ([f2a21ec](https://github.com/Kokoing123/deepagents/commit/f2a21ec1606c2560bd2fd5765409a05c2a44edee))
+* **sdk:** add total match cap and streaming to grep ([#4570](https://github.com/Kokoing123/deepagents/issues/4570)) ([8e86f5e](https://github.com/Kokoing123/deepagents/commit/8e86f5ecc8908762a2c748880287f190dde70600))
+* **sdk:** allow `write_file` to overwrite existing files ([2506fcc](https://github.com/Kokoing123/deepagents/commit/2506fccfac0e09b656d5e2fefe23162f1c762331))
+* **sdk:** allow users to override default middleware by name ([#4251](https://github.com/Kokoing123/deepagents/issues/4251)) ([90c8472](https://github.com/Kokoing123/deepagents/commit/90c8472ae226394a186bf2075459645c2056db7d))
+* **sdk:** bound grep/glob with partial results and a `truncated` flag ([#4063](https://github.com/Kokoing123/deepagents/issues/4063)) ([ef591e7](https://github.com/Kokoing123/deepagents/commit/ef591e7a86b13bbdcb0fdedd45a8f1fe33573839))
+* **sdk:** improve system prompt configurability ([#4437](https://github.com/Kokoing123/deepagents/issues/4437)) ([56c5a5e](https://github.com/Kokoing123/deepagents/commit/56c5a5e0e64cabe5fbe27308d3ddfd8a8fd9eb22))
+* **sdk:** optional video frame extraction on `read_file` ([#4094](https://github.com/Kokoing123/deepagents/issues/4094)) ([b927147](https://github.com/Kokoing123/deepagents/commit/b927147d026749c6c790bb06c9853515dabf579c))
+* **sdk:** reduce round trips when offloading large tool results with `sandbox.execute` ([#4230](https://github.com/Kokoing123/deepagents/issues/4230)) ([02f5bd7](https://github.com/Kokoing123/deepagents/commit/02f5bd7bc02f2baaf5a1eefce7d686ba62493647))
+* **sdk:** report remaining lines for paginated reads ([#4540](https://github.com/Kokoing123/deepagents/issues/4540)) ([8321194](https://github.com/Kokoing123/deepagents/commit/83211940a2cdf4c52ac21a6cde8647716a998504))
+* **sdk:** support surrounding lines in filesystem grep results ([#4706](https://github.com/Kokoing123/deepagents/issues/4706)) ([65230df](https://github.com/Kokoing123/deepagents/commit/65230df6f91d2bbe5f83d4d938da6bfac52363a1))
+* **sdk:** use `FireworksPromptCachingMiddleware` for session affinity ([#4598](https://github.com/Kokoing123/deepagents/issues/4598)) ([5d878bf](https://github.com/Kokoing123/deepagents/commit/5d878bf1341afc3f96398733b7ef18eec4b66139))
+
+
+### Bug Fixes
+
+* **langsmith-sandbox:** sandbox glob path boundary checks ([#4588](https://github.com/Kokoing123/deepagents/issues/4588)) ([c6c7213](https://github.com/Kokoing123/deepagents/commit/c6c72139b3ee7d090f657dd19ced59a9bbc41140))
+* **sdk:** accept list format for skill `allowed-tools` ([#4140](https://github.com/Kokoing123/deepagents/issues/4140)) ([d62534c](https://github.com/Kokoing123/deepagents/commit/d62534c86b87a91aca16c6bfb71209232d69a6ec))
+* **sdk:** disambiguate `read_file` line gutters ([#4561](https://github.com/Kokoing123/deepagents/issues/4561)) ([cf057b4](https://github.com/Kokoing123/deepagents/commit/cf057b4bcdb77ad67014f7dabe71e71f2366c95e))
+* **sdk:** emit terminal rubric iteration status ([#4406](https://github.com/Kokoing123/deepagents/issues/4406)) ([a51c8d2](https://github.com/Kokoing123/deepagents/commit/a51c8d2b1723d143439a1466f5a49a52c442bdfc))
+* **sdk:** improve grep literal guidance and sandbox glob routing ([#4168](https://github.com/Kokoing123/deepagents/issues/4168)) ([b1dbf5e](https://github.com/Kokoing123/deepagents/commit/b1dbf5e66ac81a9fd95abf6987ba058bb14a5edf))
+* **sdk:** isolate composite glob paths ([#4531](https://github.com/Kokoing123/deepagents/issues/4531)) ([cbdb0a7](https://github.com/Kokoing123/deepagents/commit/cbdb0a7df8cd4bbacff9ca7ac2e42232ef290c10))
+* **sdk:** isolate private custom state from subagents ([#4587](https://github.com/Kokoing123/deepagents/issues/4587)) ([a4662c0](https://github.com/Kokoing123/deepagents/commit/a4662c07296c378045006c9f45ed1d12bd1a9da6))
+* **sdk:** make skill truncation warnings actionable ([#4141](https://github.com/Kokoing123/deepagents/issues/4141)) ([2f5f5b8](https://github.com/Kokoing123/deepagents/commit/2f5f5b85793d944167a42e8d5b8e0a11bb1e3932))
+* **sdk:** move `get_sync()` inside try in `check_async_task` and `cancel_async_task` ([#3967](https://github.com/Kokoing123/deepagents/issues/3967)) ([b0d92c0](https://github.com/Kokoing123/deepagents/commit/b0d92c0f38ca0aa037b56e26b2b0d322cdd07856))
+* **sdk:** preserve `ContextT` on `create_deep_agent` `middleware` ([#4055](https://github.com/Kokoing123/deepagents/issues/4055)) ([7be76c7](https://github.com/Kokoing123/deepagents/commit/7be76c752117e6e61dcdc931ea5147261fad6768))
+* **sdk:** remove excluded tools from `ToolNode` ([#4698](https://github.com/Kokoing123/deepagents/issues/4698)) ([9709525](https://github.com/Kokoing123/deepagents/commit/970952550e8f53cd89a64a4ee98969ce757693ff))
+* **sdk:** return sentinel for empty file lists ([#3709](https://github.com/Kokoing123/deepagents/issues/3709)) ([efafd1e](https://github.com/Kokoing123/deepagents/commit/efafd1e070aeae8901ee3123c7fcbf1815a33c4f))
+* **sdk:** sandbox not-found contract and glob deny over-blocking on delete ([#4321](https://github.com/Kokoing123/deepagents/issues/4321)) ([d77496b](https://github.com/Kokoing123/deepagents/commit/d77496b969b9c59ce1c7c44e2085e5388e12c306))
+* **sdk:** unify `grep` include-glob semantics across backends ([#3936](https://github.com/Kokoing123/deepagents/issues/3936)) ([feab6e0](https://github.com/Kokoing123/deepagents/commit/feab6e0b3762aa42fa458af16d0a3e8d04d8b075))
+
 ## [0.6.12](https://github.com/langchain-ai/deepagents/compare/deepagents==0.6.11...deepagents==0.6.12) (2026-06-25)
 
 This release adds the `deepagents[aws]` extra, which installs `langchain-aws` so Bedrock users get the automatic prompt caching integration added in [#4108](https://github.com/langchain-ai/deepagents/issues/4108).
