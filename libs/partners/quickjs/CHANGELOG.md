@@ -2,6 +2,21 @@
 
 # Changelog
 
+## [0.3.4](https://github.com/Kokoing123/deepagents/compare/langchain-quickjs==0.3.3...langchain-quickjs==0.3.4) (2026-07-21)
+
+
+### Features
+
+* **code,quickjs:** dynamic subagents UI ([#4221](https://github.com/Kokoing123/deepagents/issues/4221)) ([10bcba2](https://github.com/Kokoing123/deepagents/commit/10bcba25600e51aba135f170b34aa6315c0f53d6))
+
+
+### Bug Fixes
+
+* **quickjs:** correct `eval` await description ([#4371](https://github.com/Kokoing123/deepagents/issues/4371)) ([4ab860f](https://github.com/Kokoing123/deepagents/commit/4ab860f007832821bd303809d7c2c1d2c86a6528))
+* **quickjs:** ensure top-level title on subagent response schemas ([#4155](https://github.com/Kokoing123/deepagents/issues/4155)) ([08f917e](https://github.com/Kokoing123/deepagents/commit/08f917eea79513e7e894731f884e738c2d30383f))
+* **quickjs:** normalize nested `undefined` tool args ([#3935](https://github.com/Kokoing123/deepagents/issues/3935)) ([1b461a0](https://github.com/Kokoing123/deepagents/commit/1b461a0d6c6a7a6d323db18505596fcce4326b92))
+* **quickjs:** propagate JS `task()` subagent interrupts ([#4401](https://github.com/Kokoing123/deepagents/issues/4401)) ([0b30e49](https://github.com/Kokoing123/deepagents/commit/0b30e494d59187de2e6e23db062abbf835a6d265))
+
 ## [0.3.3](https://github.com/langchain-ai/deepagents/compare/langchain-quickjs==0.3.2...langchain-quickjs==0.3.3) (2026-07-16)
 
 ### Bug Fixes
